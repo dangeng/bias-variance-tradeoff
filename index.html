@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+    <img style="margin: auto; display: block;" id="picBoxPred" src='figures-1/50.jpg' width=400px height=300px">
+
+    <div align="center">
+        <input id="image_id" type="range" style="width: 300px" oninput="showVal(this.value)" max=97 min=1 start=50 />
+    </div>
+
+    <p id="test" style="text-align: center;">Complexity: .5</p>
+
+    <img style="margin: auto; display: block; "id="picBoxErr" src='errors-1/50.jpg' width=400px height=300px>
+
+    <script>
+        function showVal(newVal){
+            document.getElementById("test").innerHTML="Complexity: " + newVal / 100;
+            showImage(newVal);
+        }
+        
+        function showImage(newVal) {
+            var img = document.getElementById("picBoxPred");
+            img.src = "figures-1/" + newVal + '.jpg';
+            
+            var img = document.getElementById("picBoxErr");
+            img.src = "errors-1/" + (newVal - 1) + '.jpg';
+        }
+    </script>
+  </body>
+</html>
