@@ -71,16 +71,24 @@ if __name__ == '__main__':
 
     train_err = []
     actual_err = []
+    
+    x_test = np.random.uniform(0, 2 * math.pi, 1000)
+    y_test = np.sin(x_test) + 0.3 * np.random.randn(1000)
+
 
     for f in np.arange(.01,.98,.01):
         yest = lowess(x, y, f=1-f, iter=3)
         pl.clf()
         pl.plot(x, y, 'rx', label='y noisy')
         pl.plot(x, yest, label='y pred')
-        pl.savefig('figures-1/' + str(int(np.round(f*100))) + '.jpg')
+        pl.savefig('figures-2/' + str(int(np.round(f*100))) + '.jpg')
 
-        training_error = np.sum(np.abs(yest-y))
-        actual_error = np.sum(np.abs(yest-np.sin(x)))
+        training_error = np.mean(np.abs(yest-y))
+
+        #test data
+        pred = np.interp(x_test, x, yest)
+
+        actual_error = np.mean(np.abs(pred-y_test))
         train_err.append(training_error)
         actual_err.append(actual_error)
 
@@ -93,4 +101,4 @@ if __name__ == '__main__':
         pl.scatter(np.arange(len(train_err)), actual_err, marker='o', c='b')
         pl.scatter(np.arange(len(train_err))[i], actual_err[i], marker='o', c='y', s=100)
         pl.scatter(np.arange(len(train_err))[i], train_err[i], marker='o', c='y', s=100)
-        pl.savefig('errors-1/' + str(i) + '.jpg')
+        pl.savefig('errors-2/' + str(i) + '.jpg')
