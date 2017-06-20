@@ -81,7 +81,7 @@ if __name__ == '__main__':
         pl.clf()
         pl.plot(x, y, 'rx', label='y noisy')
         pl.plot(x, yest, label='y pred')
-        pl.savefig('figures-2/' + str(int(np.round(f*100))) + '.jpg')
+        pl.savefig('figures-1/' + str(int(np.round(f*100))) + '.png', format='png')
 
         training_error = np.mean(np.abs(yest-y))
 
@@ -101,4 +101,4 @@ if __name__ == '__main__':
         pl.scatter(np.arange(len(train_err)), actual_err, marker='o', c='b')
         pl.scatter(np.arange(len(train_err))[i], actual_err[i], marker='o', c='y', s=100)
         pl.scatter(np.arange(len(train_err))[i], train_err[i], marker='o', c='y', s=100)
-        pl.savefig('errors-2/' + str(i) + '.jpg')
+        pl.savefig('errors-1/' + str(i) + '.png', format='png')
