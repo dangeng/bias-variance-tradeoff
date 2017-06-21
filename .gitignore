@@ -4,3 +4,5 @@ figures*
 errors*
 *.png
 *.pkl
+resize.py
+.DS_Store
