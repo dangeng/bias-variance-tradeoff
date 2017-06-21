@@ -1,4 +1,6 @@
 *.jpg
 data.pkl
-figures-fine/
-figures-1/
+figures*
+errors*
+*.png
+*.pkl
