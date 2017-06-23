@@ -23,7 +23,7 @@ from math import ceil
 import numpy as np
 from scipy import linalg
 
-
+# Thanks to agramfort for this function: https://gist.github.com/agramfort/850437
 def lowess(x, y, f=2. / 3., iter=3):
     """lowess(x, y, f=2./3., iter=3) -> yest
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         pl.clf()
         pl.plot(x, y, 'rx', label='y noisy')
         pl.plot(x, yest, label='y pred')
-        pl.savefig('figures-1/' + str(int(np.round(f*100))) + '.png', format='png')
+        pl.savefig('figures/' + str(int(np.round(f*100))) + '.png', format='png')
 
         training_error = np.mean(np.abs(yest-y))
 
@@ -101,4 +101,4 @@ if __name__ == '__main__':
         pl.scatter(np.arange(len(train_err)), actual_err, marker='o', c='b')
         pl.scatter(np.arange(len(train_err))[i], actual_err[i], marker='o', c='y', s=100)
         pl.scatter(np.arange(len(train_err))[i], train_err[i], marker='o', c='y', s=100)
-        pl.savefig('errors-1/' + str(i) + '.png', format='png')
+        pl.savefig('errors/' + str(i) + '.png', format='png')
