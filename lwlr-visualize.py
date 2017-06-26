@@ -1,29 +1,13 @@
-"""
-This module implements the Lowess function for nonparametric regression.
-
-Functions:
-lowess Fit a smooth nonparametric regression curve to a scatterplot.
-
-For more information, see
-
-William S. Cleveland: "Robust locally weighted regression and smoothing
-scatterplots", Journal of the American Statistical Association, December 1979,
-volume 74, number 368, pp. 829-836.
-
-William S. Cleveland and Susan J. Devlin: "Locally weighted regression: An
-approach to regression analysis by local fitting", Journal of the American
-Statistical Association, September 1988, volume 83, number 403, pp. 596-610.
-"""
-
-# Authors: Alexandre Gramfort <alexandre.gramfort@telecom-paristech.fr>
-#
-# License: BSD (3-clause)
-
 from math import ceil
 import numpy as np
 from scipy import linalg
+import pylab as pl
 
-# Thanks to agramfort for this function: https://gist.github.com/agramfort/850437
+#######################################################################
+############   Thanks to agramfort for this function:   ###############
+############  https://gist.github.com/agramfort/850437  ###############
+#######################################################################
+
 def lowess(x, y, f=2. / 3., iter=3):
     """lowess(x, y, f=2./3., iter=3) -> yest
 
@@ -67,7 +51,6 @@ if __name__ == '__main__':
     x.sort()
     y = np.sin(x) + 0.3 * np.random.randn(n)
 
-    import pylab as pl
 
     train_err = []
     actual_err = []
